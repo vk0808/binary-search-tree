@@ -11,7 +11,7 @@ namespace BinarySearchTreeProblem
         public BinarySearchTree<T> LeftTree { get; set; }
         public BinarySearchTree<T> RightTree { get; set; }
         private int leftCount = 0, rightCount = 0;
-
+        bool result = false;
 
         // constructor
         public BinarySearchTree(T nodeData)
@@ -57,6 +57,25 @@ namespace BinarySearchTreeProblem
                 this.rightCount++;
                 this.RightTree.Display();
             }
+        }
+
+        // method to check if value exits or not
+        public bool IfExists(T element, BinarySearchTree<T> node)
+        {
+            if (node == null)
+                return false;
+            if (node.NodeData.Equals(element))
+            {
+                Console.WriteLine($"Found the element {node.NodeData} in BST");
+                result = true;
+            }
+            else
+                Console.WriteLine($"Current element : {node.NodeData}");
+            if (element.CompareTo(node.NodeData) < 0)
+                IfExists(element, node.LeftTree);
+            if (element.CompareTo(node.NodeData) > 0)
+                IfExists(element, node.RightTree);
+            return result;
         }
     }
 }

@@ -22,6 +22,16 @@ namespace BinarySearchTreeProblem
             binarySearch.Insert(70);
             binarySearch.Insert(95);
             binarySearch.Display();
+
+
+            int searchElement = 63; 
+
+            bool result = binarySearch.IfExists(searchElement, binarySearch);
+
+            if (!result)
+            {
+                Console.WriteLine($"{searchElement} cannot be found in BST");
+            }
         }
     }
 }
